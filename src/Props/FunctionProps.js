@@ -11,8 +11,8 @@ export default function FunctionProps(props) {
 					alt="asdasds"
 				/>
 				<div className="card-body">
-					<h4 className="card-title">Title</h4>
-					<p className="card-text">Body</p>
+					<h4 className="card-title">{props.meo.name}</h4>
+					<p className="card-text">{props.meo.age}</p>
 				</div>
 			</div>
 		</div>

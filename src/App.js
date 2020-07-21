@@ -10,6 +10,7 @@ import RenderWithState from './RenderWithState/RenderWithState';
 import BaiTapChonXe from './RenderWithState/BaiTapChonXe';
 import RenderWithMap from './RenderWithState/RenderWithMap/RenderWithMap';
 import DemoProps from './Props/DemoProps';
+import ExampleCard from './LiftingUpdate/ExampleCard.js';
 
 function App() {
 	return (
@@ -24,7 +25,9 @@ function App() {
 
 			{/* <RenderWithMap /> */}
 
-			<DemoProps />
+			{/* <DemoProps /> */}
+
+			<ExampleCard />
 		</div>
 	);
 }
