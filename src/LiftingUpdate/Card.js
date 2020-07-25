@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 
 export default class Card extends Component {
+	tongTien = () => {
+		return this.props.cardList.reduce((tongTien, item, index) => {
+			return tongTien + item.soLuong * item.giaBan;
+		}, 0);
+	};
+
 	renderCardList = () => {
 		return this.props.cardList.map((item, index) => {
 			return (
@@ -16,11 +22,23 @@ export default class Card extends Component {
 					<td>{item.tenSP}</td>
 					<td>{item.giaBan}</td>
 					<td>
-						<button classname="btn btn-info">-</button>
+						<button
+							classname="btn btn-info"
+							onClick={() =>
+								this.props.tangGiam(item.maSP, false)
+							}
+						>
+							-
+						</button>
 						<span classname="mx-2">{item.soLuong}</span>
-						<button classname="btn btn-info">+</button>
+						<button
+							classname="btn btn-info"
+							onClick={() => this.props.tangGiam(item.maSP, true)}
+						>
+							+
+						</button>
 					</td>
-					<td>17100000$</td>
+					<td>{(item.soLuong * item.giaBan).toLocaleString()}$</td>
 					<td>
 						<button
 							classname="btn btn-danger"
@@ -55,12 +73,8 @@ export default class Card extends Component {
 					<tbody>{this.renderCardList()}</tbody>
 					<tfoot>
 						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td>32300000</td>
+							<td colSpan="5"></td>
+							<td>{this.tongTien().toLocaleString()}$</td>
 						</tr>
 					</tfoot>
 				</table>

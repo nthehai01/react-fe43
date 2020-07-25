@@ -54,12 +54,29 @@ export default class ExampleCard extends Component {
 		this.setState({ cardList: cardUpdate });
 	};
 
+	handleAmount = (id, tangGiam) => {
+		let cardUpdate = this.state.cardList;
+
+		let index = cardUpdate.findIndex((item) => item.maSP === id);
+
+		if (index >= 0) {
+			if (tangGiam) cardUpdate[index].soLuong++;
+			else {
+				cardUpdate[index].soLuong--;
+				if (cardUpdate[index].soLuong == 0) cardUpdate.splice(index, 1);
+			}
+		}
+
+		this.setState({ cardList: cardUpdate });
+	};
+
 	render() {
 		return (
 			<div className="container">
 				<Card
 					cardList={this.state.cardList}
 					deleteItem={this.handleDelete}
+					tangGiam={this.handleAmount}
 				/>
 				<ProductList renderProduct={this.renderProList} />
 				{this.state.proSelected ? (
