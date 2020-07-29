@@ -10,21 +10,22 @@ import RenderWithState from './RenderWithState/RenderWithState';
 import BaiTapChonXe from './RenderWithState/BaiTapChonXe';
 import RenderWithMap from './RenderWithState/RenderWithMap/RenderWithMap';
 import DemoProps from './Props/DemoProps';
+import ExampleCard from './LiftingUpdate/ExampleCard.js';
+import BTGioHang from './BTRedux/BTGioHang/BTGioHang';
+import GameBauCua from './GameBauCua';
 
 function App() {
 	return (
 		<div className="App">
 			{/* <DataBinding /> */}
-
 			{/* <EventBinding /> */}
-
 			{/* <RenderWithState /> */}
-
 			{/* <BaiTapChonXe /> */}
-
 			{/* <RenderWithMap /> */}
-
-			<DemoProps />
+			{/* <DemoProps /> */}
+			{/* <ExampleCard /> */}
+			{/* <BTGioHang /> */}
+			<GameBauCua />
 		</div>
 	);
 }
