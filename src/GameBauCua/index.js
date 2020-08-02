@@ -8,7 +8,7 @@ import './style.css';
 
 export class GameBauCua extends Component {
 	render() {
-		const { tongTien } = this.props;
+		const { tongTien, choiGame } = this.props;
 
 		return (
 			<div>
@@ -20,7 +20,14 @@ export class GameBauCua extends Component {
 							</div>
 							<h2 className="text-center text-danger">Bầu Cua</h2>
 							<div>
-								<btn className="btn btn-info">Chơi Game</btn>
+								<btn
+									className="btn btn-info"
+									onClick={() => {
+										choiGame();
+									}}
+								>
+									Chơi Game
+								</btn>
 							</div>
 						</div>
 						<div className="row">
@@ -44,4 +51,15 @@ const mapStateToProps = (state) => {
 	};
 };
 
-export default connect(mapStateToProps, null)(GameBauCua);
+const mapDispatchtoProps = (dispatch) => {
+	return {
+		choiGame: () => {
+			const actions = {
+				type: 'CHOI_GAME',
+			};
+			dispatch(actions);
+		},
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchtoProps)(GameBauCua);

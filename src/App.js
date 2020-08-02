@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -13,6 +12,7 @@ import DemoProps from './Props/DemoProps';
 import ExampleCard from './LiftingUpdate/ExampleCard.js';
 import BTGioHang from './BTRedux/BTGioHang/BTGioHang';
 import GameBauCua from './GameBauCua';
+import GameTaiXiu from './GameTaiXiu';
 
 function App() {
 	return (
@@ -25,7 +25,8 @@ function App() {
 			{/* <DemoProps /> */}
 			{/* <ExampleCard /> */}
 			{/* <BTGioHang /> */}
-			<GameBauCua />
+			{/* <GameBauCua /> */}
+			<GameTaiXiu />
 		</div>
 	);
 }

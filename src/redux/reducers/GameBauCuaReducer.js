@@ -1,3 +1,7 @@
+import { getRandomInt } from '../../utils/randomInt.js';
+
+import { TANG_GIAM } from '../constaints/GameBauCuaConst';
+
 const initialState = {
 	tongTien: 100,
 	danhSachCuoc: [
@@ -17,7 +21,7 @@ const initialState = {
 
 const GameBauCuaReducer = (state = initialState, actions) => {
 	switch (actions.type) {
-		case 'TANG_GIAM':
+		case TANG_GIAM: {
 			let { tongTien } = state;
 			let danhSachCuoc = [...state.danhSachCuoc];
 			let index = danhSachCuoc.findIndex(
@@ -36,6 +40,35 @@ const GameBauCuaReducer = (state = initialState, actions) => {
 			}
 
 			return { ...state, tongTien, danhSachCuoc };
+		}
+
+		case 'CHOI_GAME': {
+			let danhSachCuoc = [...state.danhSachCuoc];
+			let xucXac = [
+				danhSachCuoc[getRandomInt(6)],
+				danhSachCuoc[getRandomInt(6)],
+				danhSachCuoc[getRandomInt(6)],
+			];
+			let { tongTien } = state;
+
+			danhSachCuoc = danhSachCuoc.filter((item) => item.giaCuoc > 0);
+			for (let element of danhSachCuoc) {
+				let tienTraLai = xucXac.find((item) => item.ma === element.ma);
+				if (tienTraLai) tongTien += element.giaCuoc;
+			}
+
+			xucXac.forEach((item, index) => {
+				tongTien += item.giaCuoc;
+			});
+
+			danhSachCuoc = [...state.danhSachCuoc];
+			danhSachCuoc = danhSachCuoc.map((properties) => ({
+				...properties,
+				giaCuoc: 0,
+			}));
+
+			return { ...state, xucXac, tongTien, danhSachCuoc };
+		}
 
 		default:
 			break;
